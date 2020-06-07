@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>查詢投資屬性</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    #btn {
+      cursor: pointer;
+      margin: 0 5px;
+    }
+    #btn:hover {
+      transform: scale(1.3,1.3)
+    }
+  </style>
+  
+
+</head>
+<body>
+  <header>
+    <h3>了解適合您的投資屬性</h3>
+    <span class="ago-title">我今年</span>
+    <input id="age" type="text"/>
+    <span class="ago-_title">歲</span>
+    <span class="ago-limit col-xs-12">年齡限制範圍：18-65歲</span>
+    <div>
+        <button id='btn'>查詢</button>
+    </div>
+    
+
+  </header>
+
+  <div class="age_img">
+    <img src="age_18.png" alt="">
+    <img src="age_36.png" alt="">
+    <img src="age_56.png" alt="">
+
+  </div>
+
+  
+  
+  <p id="intro"></p>
+
+  <script>
+     
+  let btn = document.getElementById('btn')
+  
+  btn.addEventListener('click', function(){
+    let age = document.getElementById('age').value
+    let intro = document.getElementById('intro')
+    btn.textContent = '查詢結果在下面喔'
+    setTimeout(function(){
+      btn.textContent = '查詢'
+    }, 5000)
+    
+    if (age>=18 && age<=35 ){
+      intro.textContent = '您屬於積極型的投資人。非常積極的您如獵鷹般不停尋找獲利市場，'
+      + '並願意大筆投資在風險屬性較高的商品。積極的投資組合中資產類別包羅萬象，'
+      + '且在必要時利用槓桿操作來提高獲利，但因市場反轉所造成的資本下跌風險偏高，'
+      + '建議嚴格執行停損停利的投資原則，才能達到長期資產增值的目的。' 
+
+      
+    }
+    if (age>35 && age<=55){
+      intro.innerHTML = '您屬於穩健型的投資人。穩健的您期望在本金、固定孳息與資本增長達致平衡。'
+      + '您可以接受短期間的市場波動， 並且瞭解投資現值可能因而減損。穩健的投資組合可以包括多種類別的資產，'
+      + '透過風險分散的方式獲得穩健的投資報酬，但仍須留意個別產品類型的波動性。'
+
+    }
+    if (age>55 && age<=65){
+      intro.innerHTML = '您屬於保守型投資人。極度保守的您十分注重本金的保護，寧可讓資產隨著利率水準每年獲取穩定的孳息收入，也不願冒風險追求可能的可觀報酬。您的理財目的可利用銀行存款，或具有穩定收益的產品來達成。'
+    }
+    if(age<18 || age>65){
+      alert('請重新輸入')
+    }
+
+  })
+  
+  
+  let intro = document.getElementById("intro") 
+  </script>
+</body>
+  
+
+</html>
